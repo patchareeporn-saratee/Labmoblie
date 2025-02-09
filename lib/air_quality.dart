@@ -56,7 +56,7 @@ class _AQIState extends State<AQI> {
   Color getAqiColor(int aqi) {
     if (aqi <= 50) return const Color.fromARGB(255, 130, 238, 133);
     if (aqi <= 100) return const Color.fromARGB(255, 255, 238, 80);
-    if (aqi <= 150) return const Color.fromARGB(255, 255, 178, 62);
+    if (aqi <= 150) return const Color.fromARGB(255, 255, 165, 62);
     if (aqi <= 200) return const Color.fromARGB(255, 243, 78, 66);
     if (aqi <= 300) return const Color.fromARGB(255, 211, 51, 239);
     return const Color.fromARGB(255, 67, 62, 60);
@@ -69,6 +69,14 @@ class _AQIState extends State<AQI> {
     if (aqi <= 200) return "Unhealthy";
     if (aqi <= 300) return "Very Unhealthy";
     return "Hazardous";
+  }
+    String getAQIEmoji(int aqi) {
+    if (aqi <= 50) return '😊';
+    if (aqi <= 100) return '😐';
+    if (aqi <= 150) return '😷';
+    if (aqi <= 200) return '🤢';
+    if (aqi <= 300) return '🤮';
+    return '💀';
   }
 
   Color getTempColor(double temp) {
@@ -114,8 +122,8 @@ class _AQIState extends State<AQI> {
                   ),
                   SizedBox(height: 10),
                   Container(
-                    height: 170,
-                    width: 370,
+                    height: 270,
+                    width: 380,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: getAqiColor(aqi),
@@ -131,15 +139,20 @@ class _AQIState extends State<AQI> {
                     ),
                     child: Column(
                       children: [
+                         Text(
+                          getAQIEmoji(aqi!),
+                          style: TextStyle(fontSize: 70),
+                        ),
+                        SizedBox(width: 5),
                         Text(
                           "$aqi",
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: 75,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 5),
                         Text(
                           getAqiStatus(aqi),
                           style: TextStyle(
@@ -151,7 +164,7 @@ class _AQIState extends State<AQI> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 30),
                   RichText(
                     text: TextSpan(
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
@@ -190,4 +203,3 @@ class _AQIState extends State<AQI> {
     );
   }
 }
-

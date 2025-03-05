@@ -42,7 +42,8 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
   void _toggleLight(int lightIndex) {
     setState(() {
       if (_currentLight == lightIndex) {
-        _currentLight = -1;  
+        
+        _currentLight = -1; 
       } else {
         _currentLight = lightIndex;
       }
@@ -72,7 +73,7 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // แสดงเวลาอยู่ข้างบน
+            
             Text(
               '$_timeLeft วินาที',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -83,12 +84,17 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
             ElevatedButton(
               onPressed: _changeLight, // ปุ่มเปลี่ยนไฟ
               child: Text('เปลี่ยนไฟ'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 211, 209, 209),
+                minimumSize: Size(130, 50), 
+                textStyle: TextStyle(fontSize: 18), 
+              ),
             ),
             SizedBox(height: 25),
             IconButton(
               onPressed: _resetLights,  // ปุ่มลูกศรวน
               icon: Icon(Icons.refresh),
-              iconSize: 30,
+              iconSize: 25,
               color: Colors.deepPurple,
             ),
           ],
@@ -120,7 +126,7 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
 
   Widget _buildLight(Color color, bool isActive, int lightIndex) {
     return GestureDetector(
-      onTap: () => _toggleLight(lightIndex), // กดที่ไฟเพื่อเปลี่ยนสถานะ
+      onTap: () => _toggleLight(lightIndex), 
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         width: 100,
@@ -128,7 +134,7 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
         decoration: BoxDecoration(
           color: Colors.black,
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 3),
+          border: Border.all(color: const Color.fromARGB(255, 255, 252, 252), width: 3),
           boxShadow: [
             BoxShadow(
               color: isActive ? color.withOpacity(0.9) : Colors.transparent,

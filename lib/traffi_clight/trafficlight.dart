@@ -39,12 +39,10 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
     _startTimer();   // เริ่มต้นตัวจับเวลาใหม่
   }
 
-  // ฟังก์ชันเพื่อเปลี่ยนไฟที่เลือกเอง
   void _toggleLight(int lightIndex) {
     setState(() {
       if (_currentLight == lightIndex) {
-        // ถ้าไฟที่เลือกอยู่แล้วถูกกด จะเปลี่ยนให้ไฟนั้นๆ เป็นไม่เปิด
-        _currentLight = -1;  // ปิดไฟทั้งหมด
+        _currentLight = -1;  
       } else {
         _currentLight = lightIndex;
       }
@@ -83,7 +81,7 @@ class _TrafficLightScreenState extends State<TrafficLightScreen> {
             _buildTrafficLights(),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _changeLight, // เพิ่มปุ่มเปลี่ยนไฟ
+              onPressed: _changeLight, // ปุ่มเปลี่ยนไฟ
               child: Text('เปลี่ยนไฟ'),
             ),
             SizedBox(height: 25),
